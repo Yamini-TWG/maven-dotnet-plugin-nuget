@@ -1,17 +1,12 @@
-pipeline {
-  agent any
-  stages {
-    stage('build') {
-      steps {
-        sh '''#!/usr/bin/env groovy
+#!/usr/bin/env groovy
 
-podTemplate(label: \'twg-ff-stock-level-service\', containers: [
-       containerTemplate(name: \'Enfinity_stock\', image: \'ikhripunov/connect-maven\', ttyEnabled: true, command: \'cat\')
+podTemplate(label: 'twg-ff-stock-level-service', containers: [
+       containerTemplate(name: 'Enfinity_stock', image: 'ikhripunov/connect-maven', ttyEnabled: true, command: 'cat')
 ]) {
-   node(\'twg-ff-stock-level-service\') {
+   node('twg-ff-stock-level-service') {
 
-       container(\'Stock-level-servvice\'){
-           stage (\'Checkout code from Git\')
+       container('Stock-level-servvice'){
+           stage ('Checkout code from Git')
            // Checkout code from repository
            checkout scm
 
@@ -26,8 +21,4 @@ podTemplate(label: \'twg-ff-stock-level-service\', containers: [
        }
 
    }
-}'''
-      }
-    }
-  }
 }
