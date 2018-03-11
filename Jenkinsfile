@@ -11,11 +11,13 @@ podTemplate(label: 'twg-ff-stock-level-service', containers: [
            checkout scm
 
            stage ("maven Build ${env.BRANCH_NAME}")
-           sh "./mvn clean install ${env.BRANCH_NAME}Release"
+           echo "Helo"
 
-		   stage ("DcokerBuild ${env.BRANCH_NAME}")
-           sh "./dokcer build ${env.BRANCH_NAME}Release"
+		   stage ("DockerBuild ${env.BRANCH_NAME}")
+            echo "Helo"
 		   
+		   stage ('Upload to Docker Hub')
+            echo "Helo"
 	
 		   
            
