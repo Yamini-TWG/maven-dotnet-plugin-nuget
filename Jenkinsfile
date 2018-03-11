@@ -16,6 +16,8 @@ podTemplate(label: 'twg-ff-stock-level-service', containers: [
 		   stage ("DcokerBuild ${env.BRANCH_NAME}")
            sh "./dokcer build ${env.BRANCH_NAME}Release"
 		   
+	
+		   
            
 
        }
