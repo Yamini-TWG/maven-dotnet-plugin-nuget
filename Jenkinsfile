@@ -5,7 +5,7 @@ podTemplate(label: 'twg-ff-stock-level-service', containers: [
 ]) {
    node('twg-ff-stock-level-service') {
 
-       container('Stock-level-servvice'){
+       container('Enfinity_stock'){
            stage ('Checkout code from Git')
            // Checkout code from repository
            checkout scm
