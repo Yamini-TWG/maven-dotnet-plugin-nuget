@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 podTemplate(label: 'twg-stock', containers: [
-        containerTemplate(name: 'stock', image: 'runmymind/docker-android-sdk:alpine-standalone', ttyEnabled: true, command: 'cat')
+        containerTemplate(name: 'stock', image: 'ikhripunov/connect-maven:latest', ttyEnabled: true, command: 'cat')
 ]) {
     node('twg-stock') {
 
