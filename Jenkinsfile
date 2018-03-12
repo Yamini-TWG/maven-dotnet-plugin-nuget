@@ -15,7 +15,7 @@ podTemplate(label: 'twg-stock', containers: [
                 sh "./docker build${env.BRANCH_NamE}Release"
 
             stage ('Upload to docker')
-            echo "Helo"
+            sh "./docker push twgorg/stock-level-service:1.1-SNAPSHOT"
         }
 
     }
