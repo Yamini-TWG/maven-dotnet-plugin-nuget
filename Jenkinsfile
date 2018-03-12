@@ -11,7 +11,7 @@ podTemplate(label: 'twg-stock', containers: [
             checkout scm
 
             stage ("Build ${env.BRANCH_NAME}")
-            echo "Helo"
+                sh "./mvn clean install${env.BRANCH_NAME}Release"
 
             stage ('Distribute apk to Crashlytics')
             echo "Helo"
