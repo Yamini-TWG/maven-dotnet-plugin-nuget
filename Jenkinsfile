@@ -1,23 +1,23 @@
 #!/usr/bin/env groovy
 
-podTemplate(label: 'twg-ff-stock-level-service', containers: [
-        containerTemplate(name: 'Enfinity_stock', image: 'runmymind/docker-android-sdk:alpine-standalone', ttyEnabled: true, command: 'cat')
+podTemplate(label: 'twg-android-app', containers: [
+        containerTemplate(name: 'android', image: 'runmymind/docker-android-sdk:alpine-standalone', ttyEnabled: true, command: 'cat')
 ]) {
-    node('twg-ff-stock-level-service') {
+    node('twg-android-app') {
 
-        container('Enfinity_stock'){
+        container('android'){
             stage ('Checkout code from Git')
             // Checkout code from repository
             checkout scm
 
-            stage ("maven Build ${env.BRANCH_NAME}")
-            echo "Hello"
-                
-            stage ('Docker build to docker image')
-            echo "Hello"
+            stage ("Build ${env.BRANCH_NAME}")
+            echo "Helo"
+
+            stage ('Distribute apk to Crashlytics')
+            echo "Helo"
             
-            stage ('Upload to docker hub')
-            echo "Hello"
+            stage ('Upload to Nexus')
+            echo "Helo"
         }
 
     }
