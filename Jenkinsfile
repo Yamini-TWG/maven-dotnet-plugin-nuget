@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
-podTemplate(label: 'twg-android-app', containers: [
+podTemplate(label: 'twg-stock', containers: [
         containerTemplate(name: 'android', image: 'runmymind/docker-android-sdk:alpine-standalone', ttyEnabled: true, command: 'cat')
 ]) {
-    node('twg-android-app') {
+    node('twg-stock') {
 
         container('android'){
             stage ('Checkout code from Git')
