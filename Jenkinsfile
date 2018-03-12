@@ -11,13 +11,13 @@ podTemplate(label: 'twg-ff-stock-level-service', containers: [
             checkout scm
 
             stage ("maven Build ${env.BRANCH_NAME}")
-            sh "./mvn clean install${env.BRANCH_NAME}Release"
+            echo "Hello"
                 
             stage ('Docker build to docker image')
-            sh "./docker build${env.BRANCH_NAME}Release"
+            echo "Hello"
             
             stage ('Upload to docker hub')
-            sh './docker push twgorg/stock-level-service:1.1-SNAPSHOT'
+            echo "Hello"
         }
 
     }
