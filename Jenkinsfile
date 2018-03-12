@@ -12,11 +12,9 @@ podTemplate(label: 'twg-stock', containers: [
 
             stage ("Build ${env.BRANCH_NAME}")
                 sh "./mvn clean install${env.BRANCH_NAME}Release"
+                sh "./docker build${env.BRANCH_NamE}Release"
 
-            stage ('Distribute apk to Crashlytics')
-            echo "Helo"
-            
-            stage ('Upload to Nexus')
+            stage ('Upload to docker')
             echo "Helo"
         }
 
