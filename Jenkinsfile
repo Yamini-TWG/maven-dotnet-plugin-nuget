@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 podTemplate(label: 'twg-ff-stock-level-service', containers: [
-        containerTemplate(name: 'Enfinity_stock', image: 'ikhripunov/connect-maven:latest', ttyEnabled: true, command: 'cat')
+        containerTemplate(name: 'Enfinity_stock', image: 'runmymind/docker-android-sdk:alpine-standalone', ttyEnabled: true, command: 'cat')
 ]) {
     node('twg-ff-stock-level-service') {
 
