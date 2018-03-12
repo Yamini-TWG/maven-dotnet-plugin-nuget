@@ -17,7 +17,7 @@ podTemplate(label: 'twg-ff-stock-level-service', containers: [
             sh "./docker build${env.BRANCH_NAME}Release"
             
             stage ('Upload to docker hub')
-            sh './docker push twgorg/stock-level-service:1.1-SNAPSHOT
+            sh './docker push twgorg/stock-level-service:1.1-SNAPSHOT'
         }
 
     }
