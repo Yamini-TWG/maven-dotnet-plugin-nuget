@@ -1,23 +1,23 @@
 #!/usr/bin/env groovy
 
 podTemplate(label: 'twg-ff-stock-level-service', containers: [
-        containerTemplate(name: 'ff-stock-level', image: 'ikhripunov/connect-maven:latest', ttyEnabled: true, command: 'cat')
+        containerTemplate(name: 'Enfinity_stock', image: 'ikhripunov/connect-maven:latest', ttyEnabled: true, command: 'cat')
 ]) {
     node('twg-ff-stock-level-service') {
 
-        container('ff-stock-level'){
+        container('Enfinity_stock'){
             stage ('Checkout code from Git')
             // Checkout code from repository
             checkout scm
 
-            stage ("Build ${env.BRANCH_NAME}")
-            echo "Helo"
-
-            stage ('Distribute apk to Crashlytics')
-            echo "Helo"
+            stage ("maven Build ${env.BRANCH_NAME}")
+            sh "./mvn clean install${env.BRANCH_NAME}Release"
+                
+            stage ('Docker build to docker image')
+            sh "./docker build${env.BRANCH_NAME}Release"
             
-            stage ('Upload to Nexus')
-            echo "Helo"
+            stage ('Upload to docker hub')
+            sh './docker push twgorg/stock-level-service:1.1-SNAPSHOT
         }
 
     }
